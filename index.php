@@ -1,6 +1,4 @@
 <?php
-include 'db.php';
-
 
 if(isset($_POST['btn_añadir'])){
     header("Location: anadir.php");
@@ -11,9 +9,6 @@ if(isset($_POST['btn_abonar'])){
     header("Location: abonar.php");
     exit();
 }
-
-
-
 
 ?>
 

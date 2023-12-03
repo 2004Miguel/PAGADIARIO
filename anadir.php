@@ -3,19 +3,16 @@
 include "db.php";
 
 if(isset($_POST['btn_crear_deuda'])){
-    $nombre=$_POST["txb_name"];
+    $ob1= new Base_datos();
+    $ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
+
+    $name=$_POST["txb_name"];
+    $añadir="INSERT INTO cliente (nombre) VALUES ('$name')";
+    $Buscar="SELECT*FROM cliente";
+    //$ob1->Mostrar($Buscar);
+    $ob1->Insertar($añadir);
     
 }
-
-
-$ob1= new Base_datos();
-$ob1->conexion("localhost", "pagadiario", "root", "8del2del2004");
-$ob1->Obtener_conexion();
-
-$consulta="SELECT*FROM cliente";
-$ob1->consultas($consulta);
-
-
 
 ?>
 
@@ -42,7 +39,7 @@ $ob1->consultas($consulta);
             <p>Sino, creelo llenando los siguientes campos: </p>
             <span>
                 Nombre:
-                <input type="text" name="txb_name">
+                <input type="text" name="txb_name" placeholder="nombre">
             </span>
             <br></br>
             <input type="submit" name="btn_crear_deuda" value="CREAR DEUDA">

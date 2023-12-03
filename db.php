@@ -9,7 +9,7 @@
         public $conexion;
 
         public function __construct() {
-            print("objeto creado\n");
+            //print("objeto creado\n");
             print("");
 
         }
@@ -21,30 +21,35 @@
             $this->db_user=$db_userp;
             $this->db_password=$db_passwordp;
 
-            $this->conexion=new mysqli($db_hosp, $db_userp, $db_passwordp, $db_nombrep);
-            if ($this->conexion->connect_error) {
-                die("Error de conexión: " . $this->conexion->connect_error);
+            $this->conexion=mysqli_connect($db_hosp, $db_userp, $db_passwordp, $db_nombrep);
+            if (mysqli_connect_errno()) {
+                echo "error al conectar con la base de datos";
+                exit();
             }
+            //print('Conexion exitosa');
         }
 
-        public function Obtener_conexion(){
-            print("conexion establecida");
-            return $this->conexion;
-        }
-
-        public function __destruct() {
-            // Cerrar la conexión cuando el objeto se destruye
-            if ($this->conexion) {
-                $this->conexion->close();
-            }
-        }
-
-        public function consultas($consultap){
+        public function Mostrar($consultap){
 
             $resultado=mysqli_query($this->conexion, $consultap);
-            $fila=mysqli_fetch_row($resultado);
-            echo $fila[0];
-            echo $fila[1];
+            print("Consulta realizada con éxito");
+            while($fila=mysqli_fetch_row($resultado)){//cuadno la condición no está igualada a nada, se evalua que la condición sea igual a 0 
+                //mientras la funcion fetch_row encuentre registros, se va a ejecutar el ciclo 
+                print($fila[1]);
+                echo "<br>";
+            }
+            mysqli_close($this->conexion);
+            
+        }
+
+        public function Insertar($insert){
+            $resultado2=mysqli_query($this->conexion, $insert);
+
+            if($this->conexion->query($insert)){
+                print("Registro insertado con exito");
+            }
+            mysqli_close($this->conexion);
+
         }
 
         
