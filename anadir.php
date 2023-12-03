@@ -1,8 +1,19 @@
 <?php
+
+include "db.php";
+
 if(isset($_POST['btn_crear_deuda'])){
     $nombre=$_POST["txb_name"];
-
+    
 }
+
+
+$ob1= new Base_datos();
+$ob1->conexion("localhost", "pagadiario", "root", "8del2del2004");
+$ob1->Obtener_conexion();
+
+$consulta="SELECT*FROM cliente";
+$ob1->consultas($consulta);
 
 
 
