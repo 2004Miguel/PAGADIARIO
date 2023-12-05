@@ -10,6 +10,11 @@ if(isset($_POST['btn_abonar'])){
     exit();
 }
 
+if(isset($_POST['btn_deudor'])){
+    header("Location: deudores.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +45,13 @@ if(isset($_POST['btn_abonar'])){
             <p>Esta opción es para añadir abonos de los deudores</p>
             <br>
         </form>
+
+        <form action="" method="POST">
+            <h3>VER DEUDORES</h3>
+            <p>Aprete el siguiente botón para ver las personas con saldos pendientes</p>
+            <input type="submit" name="btn_deudor" value="VER DEUDORES">
+        </form>
+
         
     </main>
     

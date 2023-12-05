@@ -32,7 +32,7 @@
         public function Mostrar($consultap){
 
             $resultado=mysqli_query($this->conexion, $consultap);
-            print("Consulta realizada con éxito");
+
             while($fila=mysqli_fetch_row($resultado)){//cuadno la condición no está igualada a nada, se evalua que la condición sea igual a 0 
                 //mientras la funcion fetch_row encuentre registros, se va a ejecutar el ciclo 
                 print($fila[1]);
@@ -43,18 +43,21 @@
         }
 
         public function Insertar($insert){
-            $resultado2=mysqli_query($this->conexion, $insert);
-
-            if($this->conexion->query($insert)){
-                print("Registro insertado con exito");
+            if($resultado2=mysqli_query($this->conexion, $insert)){
+                print("Deuda creada con éxito");
             }
             mysqli_close($this->conexion);
-
         }
 
-        
+        public function Comprobar_existencia($consultap){
+            $busqueda=mysqli_query($this->conexion, $consultap);
+
+            if($busqueda->num_rows>0){
+                print("El cliente existe");
+            }else{
+                print("El cliente no existe");
+            }
+            
+        }
     }
-
-
-
 ?>

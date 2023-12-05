@@ -2,16 +2,26 @@
 
 include "db.php";
 
-if(isset($_POST['btn_crear_deuda'])){
-    $ob1= new Base_datos();
-    $ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
+$ob1= new Base_datos();
+$ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
+if(isset($_POST['btn_crear_deuda'])){
+    
     $name=$_POST["txb_name"];
     $añadir="INSERT INTO cliente (nombre) VALUES ('$name')";
-    $Buscar="SELECT*FROM cliente";
-    //$ob1->Mostrar($Buscar);
     $ob1->Insertar($añadir);
-    
+    header("Location:deuda.php");
+}
+
+if(isset($_POST['btn_volver'])){
+    header("Location: index.php");
+    exit();
+}
+
+if(isset($_POST['btn_buscar'])){
+    $cliente=$_POST["txb_buscarName"];
+    $buscar="SELECT nombre FROM cliente where nombre='$cliente'";
+    $ob1->Comprobar_existencia($buscar);
 }
 
 ?>
@@ -25,7 +35,12 @@ if(isset($_POST['btn_crear_deuda'])){
     <title>Añadir</title>
 </head>
 <body>
+
     <h1>AÑADIR NUEVA DEUDA</h1>
+    <form action="" method="POST">
+        <input type="submit" name="btn_volver" value="VOLVER">
+    </form>
+
     <main>
         <form action="" method="post">
             <p>Si el cliente ya exite, busquelo: </p>
@@ -42,7 +57,7 @@ if(isset($_POST['btn_crear_deuda'])){
                 <input type="text" name="txb_name" placeholder="nombre">
             </span>
             <br></br>
-            <input type="submit" name="btn_crear_deuda" value="CREAR DEUDA">
+            <input type="submit" name="btn_crear_deuda" value="AÑADIR CLIENTE">
         </form>
     </main>
     
