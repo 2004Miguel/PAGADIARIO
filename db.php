@@ -44,7 +44,7 @@
 
         public function Insertar($insert){
             if($resultado2=mysqli_query($this->conexion, $insert)){
-                print("Deuda creada con éxito");
+                //print("Deuda creada con éxito");
             }
             mysqli_close($this->conexion);
         }
@@ -54,10 +54,17 @@
 
             if($busqueda->num_rows>0){
                 print("El cliente existe");
+                return 1; //existe el cliente
             }else{
                 print("El cliente no existe");
-            }
-            
+                return 0; //no existe el cliente 
+            }    
         }
+
+        public function Obtener_id_cliente($consultap){
+            $consulta=mysqli_query($this->conexion, $consultap);
+        }
+
+
     }
 ?>

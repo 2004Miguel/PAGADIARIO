@@ -21,10 +21,15 @@ if(isset($_POST['btn_volver'])){
 if(isset($_POST['btn_buscar'])){
     $cliente=$_POST["txb_buscarName"];
     $buscar="SELECT nombre FROM cliente where nombre='$cliente'";
-    $ob1->Comprobar_existencia($buscar);
+    if($ob1->Comprobar_existencia($buscar)==1){
+        header("Location:deuda.php");
+    }
 }
 
+//Con el atributo action de los forms podemos pasar variables entre diferentes archivos php. Las podemos invocar 
+//usando $_POST/GET['variable']
 ?>
+
 
 
 <!DOCTYPE html>
@@ -36,13 +41,13 @@ if(isset($_POST['btn_buscar'])){
 </head>
 <body>
 
-    <h1>AÑADIR NUEVA DEUDA</h1>
+    <h1>ELIJA O CREE EL CLIENTE</h1>
     <form action="" method="POST">
         <input type="submit" name="btn_volver" value="VOLVER">
     </form>
 
     <main>
-        <form action="" method="post">
+        <form action="deuda.php" method="post">
             <p>Si el cliente ya exite, busquelo: </p>
             <span>
                 <input type="text" autocomplete="name" placeholder="Buscar el nombre del cliente" name="txb_buscarName">

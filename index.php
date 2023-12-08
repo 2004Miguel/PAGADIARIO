@@ -34,7 +34,7 @@ if(isset($_POST['btn_deudor'])){
             <br>
             <h3>AÑADIR</h3>
             <input type="submit" value="AÑADIR" name="btn_añadir">
-            <p>Este botón es para añadir nuevas deudas</p>
+            <p>Este botón es para crear nuevas deudas</p>
 
         </form>
        
