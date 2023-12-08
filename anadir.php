@@ -5,7 +5,7 @@ include "db.php";
 $ob1= new Base_datos();
 $ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
-if(isset($_POST['btn_crear_deuda'])){
+if(isset($_POST['btn_creacion'])){
     
     $name=$_POST["txb_name"];
     $añadir="INSERT INTO cliente (nombre) VALUES ('$name')";
@@ -47,22 +47,24 @@ if(isset($_POST['btn_buscar'])){
     </form>
 
     <main>
-        <form action="deuda.php" method="post">
+        <form action="" method="post">
             <p>Si el cliente ya exite, busquelo: </p>
             <span>
                 <input type="text" autocomplete="name" placeholder="Buscar el nombre del cliente" name="txb_buscarName">
                 <input type="submit" value="BUSCAR" name="btn_buscar">
             </span>
-            <br></br>
-            <br></br>
+        </form>
+        <br></br>
+        <br></br>
 
+        <form action="" method="post">
             <p>Sino, creelo llenando los siguientes campos: </p>
             <span>
                 Nombre:
                 <input type="text" name="txb_name" placeholder="nombre">
             </span>
             <br></br>
-            <input type="submit" name="btn_crear_deuda" value="AÑADIR CLIENTE">
+            <input type="submit" name="btn_creacion" value="AÑADIR CLIENTE">
         </form>
     </main>
     

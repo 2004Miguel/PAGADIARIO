@@ -35,6 +35,7 @@
 
             while($fila=mysqli_fetch_row($resultado)){//cuadno la condición no está igualada a nada, se evalua que la condición sea igual a 0 
                 //mientras la funcion fetch_row encuentre registros, se va a ejecutar el ciclo 
+                print($fila[0]);
                 print($fila[1]);
                 echo "<br>";
             }
@@ -60,11 +61,5 @@
                 return 0; //no existe el cliente 
             }    
         }
-
-        public function Obtener_id_cliente($consultap){
-            $consulta=mysqli_query($this->conexion, $consultap);
-        }
-
-
     }
 ?>

@@ -6,12 +6,20 @@ $ob3->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
 $cliente=$_POST['txb_buscarName'];
 
+
 if(isset($_POST['btn_volver_anadir'])){
     header("Location: anadir.php");
 }
 
 if(isset($_POST['btn_crear_deuda'])){
+    print($cliente);
+
     $monto_prestar=$_POST['txt_prestamo'];
+    $id_cliente="SELECT id FROM cliente WHERE nombre='$cliente'";
+    $deudores="SELECT*FROM cliente";
+    $ob3->Mostrar($id_cliente);
+
+    //$prestamo_query="INSERT INTO prestamo(fecha_prestamo, id_cliente, restante) VALUES";
 
 }
 
@@ -39,7 +47,7 @@ if(isset($_POST['btn_crear_deuda'])){
             <br></br>
             <span>
                 Monto a prestar:
-                <input type="number" required name="txt_prestamo">
+                <input type="number" name="txt_prestamo">
             </span>
             <br></br>
             <br></br>
