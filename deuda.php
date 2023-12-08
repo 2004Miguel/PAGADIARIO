@@ -1,11 +1,12 @@
 <?php
 include "db.php";
+session_start();
 
 $ob3=new Base_datos();
 $ob3->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
-$cliente=$_POST['txb_buscarName'];
-
+//$cliente=$_POST['txb_buscarName'];
+print("hola ".$_SESSION['search_name']);
 
 if(isset($_POST['btn_volver_anadir'])){
     header("Location: anadir.php");

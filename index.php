@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 if(isset($_POST['btn_añadir'])){
     header("Location: anadir.php");
     exit();
@@ -13,6 +15,11 @@ if(isset($_POST['btn_abonar'])){
 if(isset($_POST['btn_deudor'])){
     header("Location: deudores.php");
     exit();
+}
+
+if(isset($_POST['btn_borrar'])){
+    $_SESSION["num_1"]=1;
+    header("Location: borrar.php");
 }
 
 ?>
@@ -50,6 +57,13 @@ if(isset($_POST['btn_deudor'])){
             <h3>VER DEUDORES</h3>
             <p>Aprete el siguiente botón para ver las personas con saldos pendientes</p>
             <input type="submit" name="btn_deudor" value="VER DEUDORES">
+        </form>
+        <br></br>
+
+        <form action="" method="post">
+            <h3>Borrar deudas</h3>
+            <p>Si desea eliminar alguna deuda, de click en el siguiente botón</p>
+            <input type="submit" name="btn_borrar" value="BORRAR">
         </form>
 
         

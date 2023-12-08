@@ -2,6 +2,8 @@
 
 include "db.php";
 
+session_start();
+
 $ob1= new Base_datos();
 $ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
@@ -20,6 +22,7 @@ if(isset($_POST['btn_volver'])){
 
 if(isset($_POST['btn_buscar'])){
     $cliente=$_POST["txb_buscarName"];
+    $_SESSION["search_name"]=$cliente;
     $buscar="SELECT nombre FROM cliente where nombre='$cliente'";
     if($ob1->Comprobar_existencia($buscar)==1){
         header("Location:deuda.php");
