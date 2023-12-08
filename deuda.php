@@ -5,22 +5,22 @@ session_start();
 $ob3=new Base_datos();
 $ob3->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
-//$cliente=$_POST['txb_buscarName'];
-print("hola ".$_SESSION['search_name']);
-
 if(isset($_POST['btn_volver_anadir'])){
     header("Location: anadir.php");
 }
 
 if(isset($_POST['btn_crear_deuda'])){
-    print($cliente);
 
     $monto_prestar=$_POST['txt_prestamo'];
-    $id_cliente="SELECT id FROM cliente WHERE nombre='$cliente'";
-    $deudores="SELECT*FROM cliente";
-    $ob3->Mostrar($id_cliente);
+    $name=$_SESSION['search_name'];
+    $id_cliente_query="SELECT id FROM cliente WHERE nombre='$name'";
+    $id_cliente=$ob3->Consulta($id_cliente_query);
+    
+    $restante=$_POST['txt_prestamo'];
+    $fecha_prestamo= date("Y-m-d");
 
-    //$prestamo_query="INSERT INTO prestamo(fecha_prestamo, id_cliente, restante) VALUES";
+    $prestamo_query="INSERT INTO prestamo (fecha_prestamo, id_cliente, monto_prestado, restante) VALUES ('$fecha_prestamo', '$id_cliente', '$monto_prestar', '$restante')";
+    $ob3->Insertar($prestamo_query);
 
 }
 
@@ -42,7 +42,7 @@ if(isset($_POST['btn_crear_deuda'])){
             <br></br>
             <span>
                 Nombre del cliente:
-                <input readonly type="text" value="<?php echo $cliente ?>" >
+                <input readonly type="text" value="<?php echo $_SESSION['search_name'] ?>" >
             </span>
             <br></br>
             <br></br>

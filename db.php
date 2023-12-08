@@ -40,6 +40,8 @@
                 echo "<br>";
             }
             mysqli_close($this->conexion);
+            return $fila[0];
+
             
         }
 
@@ -60,6 +62,14 @@
                 print("El cliente no existe");
                 return 0; //no existe el cliente 
             }    
+        }
+
+        public function Consulta($consultap){
+            $consu=mysqli_query($this->conexion, $consultap);
+            $fila=mysqli_fetch_row($consu);
+
+            return $fila[0];
+
         }
     }
 ?>
