@@ -1,9 +1,15 @@
 <?php
+include "db.php";
 session_start();
 
-$num_2=5;
-$suma=$num_2 + $_SESSION['num_1'];
-print("la suma de los 2 números es: ".$suma);
+$ob4=new Base_datos();
+$ob4->conexion("localhost", "pagadiario", "root", "8del2del2004");
+//se implementa este metodo para facilidades de desarrollo y de pruebas 
+
+$ob4->Borrar_deudas();
+
+
+
 ?>
 
 

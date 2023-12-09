@@ -40,9 +40,7 @@
                 echo "<br>";
             }
             mysqli_close($this->conexion);
-            return $fila[0];
-
-            
+            return $fila[0];            
         }
 
         public function Insertar($insert){
@@ -84,5 +82,40 @@
 
             return $fila[0];
         }
+
+        public function Borrar_deudas(){
+            $query="DELETE FROM prestamo";
+            $resul=mysqli_query($this->conexion, $query);
+            print("prestamos borrados con exito");  
+        }
+
+        public function Deuda_existente($id_customerp){
+            $query="SELECT id FROM prestamo WHERE id_cliente='$id_customerp'";
+            $resul=mysqli_query($this->conexion, $query);
+            $fila=mysqli_fetch_row($resul);
+
+            if($resul->num_rows>0){
+                return $fila[0];
+                //print("Tiene deudas");
+            }else{
+                return 1;
+                //print("No tiene deudas");
+            }
+        }
+
+        public function Insertar_abono($fecha_abonop, $id_clientep, $id_prestamop, $monto_abonop){
+            $abono_query="INSERT INTO abono (fecha_abono, id_cliente, id_prestamo, monto_abono) VALUES ('$fecha_abonop', '$id_clientep', '$id_prestamop', '$monto_abonop')";
+
+            $resul=mysqli_query($this->conexion, $abono_query);
+            //$fila=mysqli_fetch_row($resul);
+
+            if($resul==false){
+                print("Error al hacer abono");
+            }else{
+                print("Abono hecho exitosamente");
+            }
+
+        }
+
     }
 ?>

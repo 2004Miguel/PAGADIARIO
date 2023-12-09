@@ -13,7 +13,7 @@ if(isset($_POST['btn_creacion'])){
     $_SESSION["search_name"]=$name;
     $añadir="INSERT INTO cliente (nombre) VALUES ('$name')";
     
-    if($ob1->Insertar_cliente($añadir, $name) == 1){
+    if($ob1->Insertar_cliente($añadir, $name) == 1){//significa que el cliente no existe y se puede crear
         header("Location:deuda.php");
     }
     
@@ -28,7 +28,7 @@ if(isset($_POST['btn_buscar'])){
     $cliente=$_POST["txb_buscarName"];
     $_SESSION["search_name"]=$cliente;
     $buscar="SELECT nombre FROM cliente where nombre='$cliente'";
-    if($ob1->Comprobar_existencia($buscar)==1){
+    if($ob1->Comprobar_existencia($buscar)==1){// si el cliente ya existe en la base de datos se puede crear la deuda
         header("Location:deuda.php");
     }
 }
