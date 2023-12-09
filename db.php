@@ -29,7 +29,7 @@
             //print('Conexion exitosa');
         }
 
-        public function Mostrar($consultap){
+        public function Mostrar_deudores($consultap){
 
             $resultado=mysqli_query($this->conexion, $consultap);
 
@@ -50,6 +50,20 @@
                 print("Deuda creada con éxito");
             }
             mysqli_close($this->conexion);
+        }
+
+        public function Insertar_cliente($consulp_costumer, $namep){
+            $verificacion_existencia="SELECT*FROM cliente WHERE nombre='$namep'";
+            $resul=mysqli_query($this->conexion, $verificacion_existencia);
+
+            if($resul->num_rows>0){
+                print("El cliente ya existe, busquelo para crear la deuda");
+                return 0;
+            }else{
+                $insert=mysqli_query($this->conexion, $consulp_costumer);
+                return 1;
+            }
+            
         }
 
         public function Comprobar_existencia($consultap){

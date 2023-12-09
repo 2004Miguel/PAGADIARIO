@@ -5,9 +5,6 @@ if(isset($_POST['btn_volver'])){
 }
 ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

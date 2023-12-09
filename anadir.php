@@ -10,9 +10,13 @@ $ob1->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 if(isset($_POST['btn_creacion'])){
     
     $name=$_POST["txb_name"];
+    $_SESSION["search_name"]=$name;
     $añadir="INSERT INTO cliente (nombre) VALUES ('$name')";
-    $ob1->Insertar($añadir);
-    header("Location:deuda.php");
+    
+    if($ob1->Insertar_cliente($añadir, $name) == 1){
+        header("Location:deuda.php");
+    }
+    
 }
 
 if(isset($_POST['btn_volver'])){
@@ -61,7 +65,7 @@ if(isset($_POST['btn_buscar'])){
         <br></br>
 
         <form action="" method="post">
-            <p>Sino, creelo llenando los siguientes campos: </p>
+            <p>Sino, creelo llenando el siguiente campo: </p>
             <span>
                 Nombre:
                 <input type="text" name="txb_name" placeholder="nombre">

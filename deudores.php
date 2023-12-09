@@ -6,15 +6,12 @@ if(isset($_POST['btn_volver'])){
     exit();
 }
 
-
-
 $ob2 = new Base_datos();
 $ob2->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 $ver_deudores="SELECT*FROM cliente";
-$ob2->Mostrar($ver_deudores);
+$ob2->Mostrar_deudores($ver_deudores);
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">

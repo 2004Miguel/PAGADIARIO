@@ -21,7 +21,6 @@ if(isset($_POST['btn_crear_deuda'])){
 
     $prestamo_query="INSERT INTO prestamo (fecha_prestamo, id_cliente, monto_prestado, restante) VALUES ('$fecha_prestamo', '$id_cliente', '$monto_prestar', '$restante')";
     $ob3->Insertar($prestamo_query);
-
 }
 
 
