@@ -47,7 +47,7 @@
 
         public function Insertar($insert){
             if($resultado2=mysqli_query($this->conexion, $insert)){
-                //print("Deuda creada con éxito");
+                print("Deuda creada con éxito");
             }
             mysqli_close($this->conexion);
         }
@@ -64,12 +64,11 @@
             }    
         }
 
-        public function Consulta($consultap){
+        public function Id_cliente($consultap){
             $consu=mysqli_query($this->conexion, $consultap);
             $fila=mysqli_fetch_row($consu);
 
             return $fila[0];
-
         }
     }
 ?>

@@ -12,12 +12,12 @@ if(isset($_POST['btn_volver_anadir'])){
 if(isset($_POST['btn_crear_deuda'])){
 
     $monto_prestar=$_POST['txt_prestamo'];
-    $name=$_SESSION['search_name'];
+    $name=$_SESSION['search_name'];//Esta variable viene de anadir.php
     $id_cliente_query="SELECT id FROM cliente WHERE nombre='$name'";
-    $id_cliente=$ob3->Consulta($id_cliente_query);
+    $id_cliente=$ob3->Id_cliente($id_cliente_query);
     
     $restante=$_POST['txt_prestamo'];
-    $fecha_prestamo= date("Y-m-d");
+    $fecha_prestamo= date("Y-m-d");//aaaa-mm-dd
 
     $prestamo_query="INSERT INTO prestamo (fecha_prestamo, id_cliente, monto_prestado, restante) VALUES ('$fecha_prestamo', '$id_cliente', '$monto_prestar', '$restante')";
     $ob3->Insertar($prestamo_query);
