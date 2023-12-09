@@ -12,27 +12,36 @@ if(isset($_POST['btn_volver'])){
 
 if(isset($_POST['btn_pagar'])){
     $customer=$_POST['txb_customer_pay'];
-    //print("hola ".$customer);
+    //nombre del cliente
+
     $value_pay=$_POST['txb_value_pay'];
-    //print("hola ".$value_pay);
+    //valor que va a pagar
+
     $query_customer="SELECT*FROM cliente WHERE nombre='$customer'";
+    //consulta para saber si el cliente existe 
 
-    if($ob5->Comprobar_existencia($query_customer)==1){//El cliente existe
+    if($ob5->Comprobar_existencia($query_customer)==1){
+        //En caso de que la función devulva 1 es porque el cliente existe
+
         $id_customer="SELECT id FROM cliente WHERE nombre='$customer'";
-        $id_clien=$ob5->Id_cliente($id_customer);//id del cliente
-        //print($id_clien);
-        $id_deuda=$ob5->Deuda_existente($id_clien);//el cliente tiene deudas
-        $fecha_abono= date("Y-m-d");
-        if($id_deuda != 0){// El cliente tiene deudas asociadas 
+        //Consulta para seleccionar el id que pertenece al nombre del cliente
 
+        $id_clien=$ob5->Id_cliente($id_customer);
+        //el id del cliente se almacena en la variable
+
+        $id_deuda=$ob5->Deuda_existente($id_clien);
+        //si el cliente tiene una deuda, la función va a devolver el id de esa deuda
+
+        $fecha_abono= date("Y-m-d");
+        //la fecha en la que se hace el abono 
+
+        if($id_deuda != 0){// El cliente tiene deudas asociadas 
             $ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
         }
     }
-
 }
-
-
 ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
