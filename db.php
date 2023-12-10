@@ -127,5 +127,18 @@
             return $fila[0];
         }
 
+        public function Valor_abono($id_clientep, $id_prestamop){
+
+            $abono_query="SELECT monto_abono FROM abono WHERE id_cliente='$id_clientep' AND id_prestamo='$id_prestamop'";
+            $abono=mysqli_query($this->conexion, $abono_query);
+
+            $fila=mysqli_fetch_row($abono);
+            return $fila[0];
+        }
+
+        function Update_restante_prestamo($restante_prestamop, $abonop){
+            
+        }
+
     }
 ?>

@@ -39,6 +39,13 @@ if(isset($_POST['btn_pagar'])){
             //$abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
             $abono=1;
             if($abono==1){
+                $restante_prestamo=$ob5->Restante_prestamo($id_clien);
+                print("El restante del prestamo es: ".$restante_prestamo);
+
+                $abono=$ob5->Valor_abono($id_clien, $id_deuda);
+                print("El valor abonado es: ".$abono);
+
+                
 
             }
         }
