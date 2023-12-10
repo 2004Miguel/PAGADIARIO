@@ -36,7 +36,11 @@ if(isset($_POST['btn_pagar'])){
         //la fecha en la que se hace el abono 
 
         if($id_deuda != 0){// El cliente tiene deudas asociadas 
-            $ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
+            //$abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
+            $abono=1;
+            if($abono==1){
+
+            }
         }
     }
 }

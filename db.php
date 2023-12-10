@@ -111,10 +111,20 @@
 
             if($resul==false){
                 print("Error al hacer abono");
+                return 0;
             }else{
                 print("Abono hecho exitosamente");
+                return 1;
             }
 
+        }
+
+        public function Restante_prestamo($id_clientep){
+            $monto_prestado_query="SELECT monto_prestado FROM prestamo WHERE id_cliente='$id_clientep'";
+            $monto_prestado=mysqli_query($this->conexion, $monto_prestado_query);
+            $fila=mysqli_fetch_row($monto_prestado);
+
+            return $fila[0];
         }
 
     }
