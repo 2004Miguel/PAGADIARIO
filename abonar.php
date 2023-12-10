@@ -36,16 +36,16 @@ if(isset($_POST['btn_pagar'])){
         //la fecha en la que se hace el abono 
 
         if($id_deuda != 0){// El cliente tiene deudas asociadas 
-            //$abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
-            $abono=1;
-            if($abono==1){
+            $abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
+            //$abono=1;
+            if($abono_resul==1){
                 $restante_prestamo=$ob5->Restante_prestamo($id_clien);
                 print("El restante del prestamo es: ".$restante_prestamo);
 
                 $abono=$ob5->Valor_abono($id_clien, $id_deuda);
                 print("El valor abonado es: ".$abono);
 
-                
+                $ob5->Update_restante_prestamo($restante_prestamo, $abono, $id_deuda);
 
             }
         }

@@ -136,8 +136,16 @@
             return $fila[0];
         }
 
-        function Update_restante_prestamo($restante_prestamop, $abonop){
-            
+        function Update_restante_prestamo($restante_prestamop, $abonop, $id_deudap){
+            $restante=$restante_prestamop-$abonop;
+            $restante_query="UPDATE prestamo SET restante='$restante' WHERE  id='$id_deudap'";
+            $resul=mysqli_query($this->conexion, $restante_query);
+
+            if($resul==true){
+                print("Actualización del restante exitosa");
+            }else{
+                print("Error al actualizar el restante");
+            }
         }
 
     }
