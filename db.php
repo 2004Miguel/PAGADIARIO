@@ -148,5 +148,34 @@
             }
         }
 
+        function Ver_abonos(){
+
+            $abo="SELECT*FROM abono";
+            $resul=mysqli_query($this->conexion, $abo);
+            
+            while($fila=mysqli_fetch_row($resul)){
+                echo "<br></br>";
+
+                echo "Id abono: ";
+                print($fila[0]);
+                echo " ";
+
+                echo "\Monto abonado: ";
+                print($fila[1]);
+                echo " ";
+
+                echo "Fecha de abono: ";
+                print($fila[2]);
+                echo " ";
+
+                echo "Id cliente: ";
+                print($fila[3]);
+                echo " ";
+
+                echo "Id prestamo: ";
+                print($fila[4]);
+                echo " ";
+            }
+        }
     }
 ?>

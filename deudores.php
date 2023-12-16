@@ -5,6 +5,7 @@ if(isset($_POST['btn_volver'])){
     header("Location: index.php");
     exit();
 }
+echo "<h1>Deudores</h1>";
 
 $ob2 = new Base_datos();
 $ob2->Conexion("localhost", "pagadiario", "root", "8del2del2004");
@@ -21,10 +22,9 @@ $ob2->Mostrar_deudores($ver_deudores);
     <title>Deudores</title>
 </head>
 <body>
-    <h1>Deudores</h1>
+    <br></br>
     <form action="" method="POST">
         <input type="submit" name="btn_volver" value="VOLVER">
     </form>
-    
 </body>
 </html>

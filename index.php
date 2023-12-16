@@ -22,6 +22,10 @@ if(isset($_POST['btn_borrar'])){
     header("Location: borrar.php");
 }
 
+if(isset($_POST['ver_abonos'])){
+    header("Location: abonos.php");
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +68,14 @@ if(isset($_POST['btn_borrar'])){
             <h3>Borrar deudas</h3>
             <p>Si desea eliminar alguna deuda, de click en el siguiente botón</p>
             <input type="submit" name="btn_borrar" value="BORRAR">
+        </form>
+        <br></br>
+
+
+        <form action="" method="post">
+            <h3>Ver abonos</h3>
+            <p>Si quiere ver todos los abonos, de click en el botón</p>
+            <input type="submit" name="ver_abonos" value="VER ABONOS">
         </form>
 
         
