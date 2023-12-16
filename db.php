@@ -156,23 +156,23 @@
             while($fila=mysqli_fetch_row($resul)){
                 echo "<br></br>";
 
-                echo "Id abono: ";
+                echo "<strong>Id abono: </strong>";
                 print($fila[0]);
                 echo " ";
 
-                echo "\Monto abonado: ";
+                echo "<strong>Monto abonado: </strong>";
                 print($fila[1]);
                 echo " ";
 
-                echo "Fecha de abono: ";
+                echo "<strong>Fecha de abono: </strong>";
                 print($fila[2]);
                 echo " ";
 
-                echo "Id cliente: ";
+                echo "<strong>Id cliente: </strong>";
                 print($fila[3]);
                 echo " ";
 
-                echo "Id prestamo: ";
+                echo "<strong>Id prestamo: </strong>";
                 print($fila[4]);
                 echo " ";
             }
