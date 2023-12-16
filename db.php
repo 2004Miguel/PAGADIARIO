@@ -64,7 +64,7 @@
             
         }
 
-        public function Comprobar_existencia($consultap){
+        public function Comprobar_existencia($consultap){//SELECT*FROM cliente WHERE nombre='$customer desde abonar.php
             $busqueda=mysqli_query($this->conexion, $consultap);
 
             if($busqueda->num_rows>0){
@@ -110,7 +110,7 @@
             //$fila=mysqli_fetch_row($resul);
 
             if($resul==false){
-                print("Error al hacer abono");
+                print("Error al hacer abono o el cliente no tiene prestamos activos");
                 return 0;
             }else{
                 print("Abono hecho exitosamente");
@@ -136,16 +136,22 @@
             return $fila[0];
         }
 
-        function Update_restante_prestamo($restante_prestamop, $abonop, $id_deudap){
-            $restante=$restante_prestamop-$abonop;
-            $restante_query="UPDATE prestamo SET restante='$restante' WHERE  id='$id_deudap'";
-            $resul=mysqli_query($this->conexion, $restante_query);
+        function Update_restante_prestamo($total_prestamop, $id_prestamop, $id_clienp){
+            //calcular el restante y hacer el update
+        }
 
-            if($resul==true){
-                print("Actualización del restante exitosa");
-            }else{
-                print("Error al actualizar el restante");
+        function Suma_abono($id_prestamop, $id_clienp){
+            $total=0;
+            $suma_abono="SELECT monto_abono FROM abono WHERE id_prestamo='$id_prestamop' AND id_cliente='$id_clienp'";
+            $resul=mysqli_query($this->conexion, $suma_abono);
+
+            while($fila=mysqli_fetch_row($resul)){
+                //print($fila[0]);
+                $suma=$fila[0] + $total;
+                $total_abono=$suma;
             }
+            return $total_abono;
+            //print("el total de abono es: ". $total_abono);
         }
 
         function Ver_abonos(){
