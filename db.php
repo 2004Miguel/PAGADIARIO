@@ -119,7 +119,7 @@
 
         }
 
-        public function Restante_prestamo($id_clientep){
+        public function Restante_prestamo($id_clientep){//Devuelve la cantidad prestada del cliente
             $monto_prestado_query="SELECT monto_prestado FROM prestamo WHERE id_cliente='$id_clientep'";
             $monto_prestado=mysqli_query($this->conexion, $monto_prestado_query);
             $fila=mysqli_fetch_row($monto_prestado);
@@ -137,15 +137,18 @@
         }
 
         function Update_restante_prestamo($total_abono, $prestamop, $id_prestamop, $id_clienp){
-            //calcular el restante y hacer el update
-            $deuda_queda=$prestamop-$total_abono;
-            $query="UPDATE prestamo SET restante = '$deuda_queda' WHERE id='$id_prestamop'";
-            $resul=mysqli_query($this->conexion, $query);
+            $resta=$prestamop-$total_abono;
+            //print("El restnte es: ".$resta);
+            $consul="UPDATE prestamo SET restante='$resta' WHERE id='$id_prestamop' AND id_cliente='$id_clienp'";
+            $resul=mysqli_query($this->conexion, $consul);
+
             if($resul==true){
-                print("Abono exitoso");
+                print("Abono hecho exitosamente");
             }else{
                 print("Error al hacer el abono");
             }
+        
+            
         }
 
         function Suma_abono($id_prestamop, $id_clienp){
@@ -154,12 +157,12 @@
             $resul=mysqli_query($this->conexion, $suma_abono);
 
             while($fila=mysqli_fetch_row($resul)){
-                print($fila[0]);
+                //print($fila[0]);
                 $suma=$fila[0] + $total_abono;
                 $total_abono=$suma;
             }
-           // return $total_abono;
-            print("el total de abono es: ". $total_abono);
+            return $total_abono;
+            //print("el total de abono es: ". $total_abono);
         }
 
         function Ver_abonos(){
