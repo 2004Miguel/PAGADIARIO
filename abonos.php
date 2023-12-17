@@ -8,6 +8,10 @@ $pagos=new Base_datos();
 $pagos->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
 $pagos->Ver_abonos();
+
+if(isset($_POST['btn_back'])){
+    header("Location: index.php");
+}
 ?>
 
 
@@ -19,6 +23,9 @@ $pagos->Ver_abonos();
     <title>Abonos</title>
 </head>
 <body>
-    
+    <br></br>
+    <form action="" method="post">
+        <input type="submit" name="btn_back" value="VOLVER">
+    </form>
 </body>
 </html>

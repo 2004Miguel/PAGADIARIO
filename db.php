@@ -136,8 +136,16 @@
             return $fila[0];
         }
 
-        function Update_restante_prestamo($total_prestamop, $id_prestamop, $id_clienp){
+        function Update_restante_prestamo($total_abono, $prestamop, $id_prestamop, $id_clienp){
             //calcular el restante y hacer el update
+            $deuda_queda=$prestamop-$total_abono;
+            $query="UPDATE prestamo SET restante = '$deuda_queda' WHERE id='$id_prestamop'";
+            $resul=mysqli_query($this->conexion, $query);
+            if($resul==true){
+                print("Abono exitoso");
+            }else{
+                print("Error al hacer el abono");
+            }
         }
 
         function Suma_abono($id_prestamop, $id_clienp){
