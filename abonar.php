@@ -45,10 +45,10 @@ if(isset($_POST['btn_pagar'])){
                 $abono=$ob5->Valor_abono($id_clien, $id_deuda);
                 print("El valor abonado es: ".$abono);*/
 
-                $total_abonos=$ob5->Suma_abono($id_deuda, $id_clien);
-                $restante=$ob5->Restante_prestamo($id_clien);
+                $ob5->Suma_abono($id_deuda, $id_clien);
+                /*$restante=$ob5->Restante_prestamo($id_clien);
 
-                $ob5->Update_restante_prestamo($total_abonos, $restante, $id_deuda, $id_clien);
+                $ob5->Update_restante_prestamo($total_abonos, $restante, $id_deuda, $id_clien);*/
             }
         }
     }

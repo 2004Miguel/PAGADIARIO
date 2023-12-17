@@ -154,12 +154,12 @@
             $resul=mysqli_query($this->conexion, $suma_abono);
 
             while($fila=mysqli_fetch_row($resul)){
-                //print($fila[0]);
-                $suma=$fila[0] + $total;
+                print($fila[0]);
+                $suma=$fila[0] + $total_abono;
                 $total_abono=$suma;
             }
-            return $total_abono;
-            //print("el total de abono es: ". $total_abono);
+           // return $total_abono;
+            print("el total de abono es: ". $total_abono);
         }
 
         function Ver_abonos(){
