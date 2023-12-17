@@ -7,10 +7,13 @@ session_start();
 $pagos=new Base_datos();
 $pagos->Conexion("localhost", "pagadiario", "root", "8del2del2004");
 
-$pagos->Ver_abonos();
 
 if(isset($_POST['btn_back'])){
     header("Location: index.php");
+}
+
+if(isset($_POST['btn_ver_abonos'])){
+    $pagos->Ver_abonos();
 }
 ?>
 
@@ -24,6 +27,14 @@ if(isset($_POST['btn_back'])){
 </head>
 <body>
     <br></br>
+
+    <form action="" method="post">
+        <label for="deudor">Nombre del deudor</label>
+        <input type="text" name="txt_name" placeholder="Nombre del deudor" id="deudor">
+        <br></br>
+        <input type="submit" value="BUSCAR ABONOS" name="btn_ver_abonos">
+    </form>
+    
     <form action="" method="post">
         <input type="submit" name="btn_back" value="VOLVER">
     </form>
