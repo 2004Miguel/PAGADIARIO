@@ -163,34 +163,46 @@
             //print("el total de abono es: ". $total_abono);
         }
 
-        function Ver_abonos(){
+        function Ver_abonos($id_clientep){
 
-            $abo="SELECT*FROM abono";
+            $abo="SELECT*FROM abono WHERE id_cliente='$id_clientep'";
             $resul=mysqli_query($this->conexion, $abo);
             
-            while($fila=mysqli_fetch_row($resul)){
-                echo "<br></br>";
-
-                echo "<strong>Id abono: </strong>";
-                print($fila[0]);
-                echo " ";
-
-                echo "<strong>Monto abonado: </strong>";
-                print($fila[1]);
-                echo " ";
-
-                echo "<strong>Fecha de abono: </strong>";
-                print($fila[2]);
-                echo " ";
-
-                echo "<strong>Id cliente: </strong>";
-                print($fila[3]);
-                echo " ";
-
-                echo "<strong>Id prestamo: </strong>";
-                print($fila[4]);
-                echo " ";
+            if($resul->num_rows>0){
+                while($fila=mysqli_fetch_row($resul)){
+                    echo "<br></br>";
+    
+                    echo "<strong>Id abono: </strong>";
+                    print($fila[0]);
+                    echo " ";
+    
+                    echo "<strong>Monto abonado: </strong>";
+                    print($fila[1]);
+                    echo " ";
+    
+                    echo "<strong>Fecha de abono: </strong>";
+                    print($fila[2]);
+                    echo " ";
+    
+                    echo "<strong>Id cliente: </strong>";
+                    print($fila[3]);
+                    echo " ";
+    
+                    echo "<strong>Id prestamo: </strong>";
+                    print($fila[4]);
+                    echo " ";
+                }
+            }else{
+                print("El cliente no tiene abonos");
             }
+        }
+
+        function Id_clientex2($nombrep){
+            $query="SELECT id FROM cliente WHERE nombre='$nombrep'";
+            $consul=mysqli_query($this->conexion, $query);
+            $fila=mysqli_fetch_row($consul);
+
+            return $fila[0];
         }
     }
 ?>

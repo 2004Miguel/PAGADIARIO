@@ -13,7 +13,10 @@ if(isset($_POST['btn_back'])){
 }
 
 if(isset($_POST['btn_ver_abonos'])){
-    $pagos->Ver_abonos();
+    $nombre=$_POST['txt_name'];
+
+    $id_cliente=$pagos->Id_clientex2($nombre);
+    $pagos->Ver_abonos($id_cliente);
 }
 ?>
 
@@ -34,7 +37,7 @@ if(isset($_POST['btn_ver_abonos'])){
         <br></br>
         <input type="submit" value="BUSCAR ABONOS" name="btn_ver_abonos">
     </form>
-    
+    <br></br>
     <form action="" method="post">
         <input type="submit" name="btn_back" value="VOLVER">
     </form>
