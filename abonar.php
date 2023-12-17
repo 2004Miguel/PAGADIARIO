@@ -35,23 +35,19 @@ if(isset($_POST['btn_pagar'])){
         $fecha_abono= date("Y-m-d");
         //la fecha en la que se hace el abono 
 
-        if($id_deuda != 0){// El cliente tiene deudas asociadas 
-            $abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);
-            //$abono=1;
-            if($abono_resul==1){
-                /*$restante_prestamo=$ob5->Restante_prestamo($id_clien);
-                print("El restante del prestamo es: ".$restante_prestamo);
+        if($id_deuda != 0){// El cliente tiene deudas asociadas. La condición es que el Id del prestamo sea diferente de 0. SE PUEDE MEJORAR LA CONDICIÓN 
+            $abono_resul=$ob5->Insertar_abono($fecha_abono, $id_clien, $id_deuda, $value_pay);//La función devuelve 1 si se hizo el abono exitosamente
 
-                $abono=$ob5->Valor_abono($id_clien, $id_deuda);
-                print("El valor abonado es: ".$abono);*/
+            if($abono_resul==1){
 
                 $tot_abon=$ob5->Suma_abono($id_deuda, $id_clien);
-                $restante=$ob5->Restante_prestamo($id_clien);
-                //print("prestado ".$restante);
+                $restante=$ob5->Restante_prestamo($id_clien);//Se obtiene el valor que se prestó
 
                 $ob5->Update_restante_prestamo($tot_abon, $restante, $id_deuda, $id_clien);
             }
         }
+    }else{
+        print("El cliente no existe");
     }
 }
 ?>

@@ -137,8 +137,8 @@
         }
 
         function Update_restante_prestamo($total_abono, $prestamop, $id_prestamop, $id_clienp){
-            $resta=$prestamop-$total_abono;
-            //print("El restnte es: ".$resta);
+            $resta=$prestamop-$total_abono;//Se calcula el restante
+
             $consul="UPDATE prestamo SET restante='$resta' WHERE id='$id_prestamop' AND id_cliente='$id_clienp'";
             $resul=mysqli_query($this->conexion, $consul);
 
@@ -147,8 +147,6 @@
             }else{
                 print("Error al hacer el abono");
             }
-        
-            
         }
 
         function Suma_abono($id_prestamop, $id_clienp){
@@ -156,7 +154,7 @@
             $suma_abono="SELECT monto_abono FROM abono WHERE id_prestamo='$id_prestamop' AND id_cliente='$id_clienp'";
             $resul=mysqli_query($this->conexion, $suma_abono);
 
-            while($fila=mysqli_fetch_row($resul)){
+            while($fila=mysqli_fetch_row($resul)){//Se suman todos los abonos hechos a la deuda para saber cuanto le falta sobre la deuda total (osea que se calcula  el restante)
                 //print($fila[0]);
                 $suma=$fila[0] + $total_abono;
                 $total_abono=$suma;
