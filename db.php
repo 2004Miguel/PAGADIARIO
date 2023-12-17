@@ -204,5 +204,23 @@
 
             return $fila[0];
         }
+
+        function Deudores($id_clien){
+            $query="SELECT*FROM prestamo WHERE id_cliente='$id_clien'";
+            $resul=mysqli_query($this->conexion, $query);
+            $fila=mysqli_fetch_row($resul);
+
+            if($resul->num_rows>0){
+                print($fila[0]);
+                pritn($fila[2]);
+                pritn($fila[3]);
+                pritn($fila[4]);
+                pritn($fila[5]);
+                pritn($fila[6]);
+
+
+            }
+
+        }
     }
 ?>
