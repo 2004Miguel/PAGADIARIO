@@ -217,8 +217,6 @@
                 pritn($fila[4]);
                 pritn($fila[5]);
                 pritn($fila[6]);
-
-
             }
 
         }
