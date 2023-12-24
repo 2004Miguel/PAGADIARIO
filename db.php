@@ -166,6 +166,9 @@
         function Ver_abonos($id_clientep){
 
             $abo="SELECT*FROM abono WHERE id_cliente='$id_clientep'";
+            $total_abono="SELECT SUM(monto_abono) FROM abono WHERE id_cliente='$id_clientep'";
+            $resul2=mysqli_query($this->conexion, $total_abono);
+            $tabono=mysqli_fetch_array($resul2);
             $resul=mysqli_query($this->conexion, $abo);
             
             if($resul->num_rows>0){
@@ -192,6 +195,9 @@
                     print($fila[4]);
                     echo " ";
                 }
+                echo "<br></br>";
+                print("<strong>Total abonos:</strong> ".$tabono[0]);
+
             }else{
                 print("El cliente no tiene abonos");
             }
@@ -208,15 +214,35 @@
         function Deudores($id_clien){
             $query="SELECT*FROM prestamo WHERE id_cliente='$id_clien'";
             $resul=mysqli_query($this->conexion, $query);
-            $fila=mysqli_fetch_row($resul);
+            $fil=mysqli_fetch_row($resul);  
 
             if($resul->num_rows>0){
-                print($fila[0]);
-                pritn($fila[2]);
-                pritn($fila[3]);
-                pritn($fila[4]);
-                pritn($fila[5]);
-                pritn($fila[6]);
+                echo "<strong>Id prestamo: </strong>";
+                print($fil[0]);
+                echo " ";
+
+                echo "<strong>Id cliente: </strong>";
+                print($fil[1]);
+                echo " ";
+
+                echo "<strong>Fecha de prestamo: </strong>";
+                print($fil[2]);
+                echo " ";
+
+                echo "<strong>Restante: </strong>";
+                print($fil[3]);
+                echo " ";
+
+                echo "<strong>Monto prestado: </strong>";
+                print($fil[4]);
+                echo " ";
+
+                echo "<strong>Estado: </strong>";
+                print($fil[5]);
+                echo " ";
+                
+            }else{
+                print("El cliente no tiene deudas pendientes");
             }
 
         }

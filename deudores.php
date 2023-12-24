@@ -18,7 +18,7 @@ if(isset($_POST['btn_ver_deudores'])){
 if(isset($_POST['btn_buscar'])){
     $nombre=$_POST['txt_name_deudor'];
     $id_cli=$ob2->Id_clientex2($nombre);
-    
+    $ob2->Deudores($id_cli);
 }
 
 ?>
