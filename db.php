@@ -147,6 +147,15 @@
             }else{
                 print("Error al hacer el abono");
             }
+
+            if($resta<=0){
+                $estado="pagado";
+                $cambio_estado="UPDATE prestamo SET estado='$estado' WHERE id='$id_prestamop' AND id_cliente='$id_clienp'";
+                $run=mysqli_query($this->conexion, $cambio_estado);
+                if($run==true){
+                    print("DEUDA PAGADA");
+                }
+            }
         }
 
         function Suma_abono($id_prestamop, $id_clienp){
@@ -159,9 +168,11 @@
                 $suma=$fila[0] + $total_abono;
                 $total_abono=$suma;
             }
+           
             return $total_abono;
             //print("el total de abono es: ". $total_abono);
         }
+
 
         function Ver_abonos($id_clientep){
 
